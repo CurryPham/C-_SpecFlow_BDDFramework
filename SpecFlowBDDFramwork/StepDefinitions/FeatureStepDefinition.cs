@@ -6,13 +6,17 @@ namespace SpecFlowBDDFramwork.StepDefinitions
     [Binding]
     public sealed class FeatureStepDefinition
     {
-        private IWebDriver? driver;
+        private IWebDriver driver;
+
+        public FeatureStepDefinition(IWebDriver driver)
+        {
+            this.driver = driver;
+        }
 
         [Given(@"Open the browser")]
         public void GivenOpenTheBrowser()
         {
-            driver = new ChromeDriver();
-            driver.Manage().Window.Maximize();
+   
         }
 
         [When(@"Enter the URL")]
@@ -30,7 +34,7 @@ namespace SpecFlowBDDFramwork.StepDefinitions
             driver.FindElement(By.XPath("//button[text()='Log in']")).Click();
             Thread.Sleep(1000);
 
-            driver.Quit();
+            //driver.Quit();
 
 
         }
